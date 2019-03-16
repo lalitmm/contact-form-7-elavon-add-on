@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // display other plugins page
-function cf7pp_extensions_page()	{
+function cf7elavon_extensions_page()	{
 	setlocale( LC_MONETARY, get_locale() );
-	$extensions     = cf7pp_get_extensions();
+	$extensions     = cf7elavon_get_extensions();
 	$extensions 	= array_reverse($extensions);
 	$tags           = '<a><em><strong><blockquote><ul><ol><li><p>';
 	$length         = 55;
@@ -27,7 +27,7 @@ function cf7pp_extensions_page()	{
 				$link        = esc_url( add_query_arg( array(
 					'utm_source'   => 'plugin-extensions-page',
 					'utm_medium'   => 'plugin',
-					'utm_campaign' => 'cf7pp_extensions_page',
+					'utm_campaign' => 'cf7elavon_extensions_page',
 					'utm_content'  => $extension->info->title
 				), $link ) );
 				
@@ -65,10 +65,10 @@ function cf7pp_extensions_page()	{
 
 
 /* Retrieve the published extensions from wpplugin.org and store within transient. */
-function cf7pp_get_extensions()	{
-	$extensions = get_transient( '_cf7pp_extensions_feed' );
+function cf7elavon_get_extensions()	{
+	$extensions = get_transient( '_cf7elavon_extensions_feed' );
 
-	if ( false === $extensions || doing_action( 'cf7pp_daily_scheduled_events' ) ) {
+	if ( false === $extensions || doing_action( 'cf7elavon_daily_scheduled_events' ) ) {
 		$route    = esc_url( 'https://wpplugin.org/edd-api/products/' );
 		$number   = 20;
 		$endpoint = add_query_arg( array( 'number' => $number ), $route );
@@ -79,7 +79,7 @@ function cf7pp_get_extensions()	{
 			$content = json_decode( $body );
 			
 			if ( is_object( $content ) && isset( $content->products ) ) {
-				set_transient( '_cf7pp_extensions_feed', $content->products, DAY_IN_SECONDS / 2 ); // Store for 24 hours
+				set_transient( '_cf7elavon_extensions_feed', $content->products, DAY_IN_SECONDS / 2 ); // Store for 24 hours
 				$extensions = $content->products;
 			}
 		}
@@ -87,4 +87,4 @@ function cf7pp_get_extensions()	{
 
 	return $extensions;
 }
-add_action( 'cf7pp_daily_scheduled_events', 'cf7pp_get_extensions' );
+add_action( 'cf7elavon_daily_scheduled_events', 'cf7elavon_get_extensions' );

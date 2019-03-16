@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // admin table
-function cf7pp_admin_table() {
+function cf7elavon_admin_table() {
 
 
 
@@ -92,7 +92,7 @@ function cf7pp_admin_table() {
 		$options['stripe_return'] = 			sanitize_text_field($_POST['stripe_return']);
 		if (empty($options['stripe_return'])) { $options['stripe_return'] = ''; }
 
-		update_option("cf7pp_options", $options);
+		update_option("cf7elavon_options", $options);
 
 		echo "<br /><div class='updated'><p><strong>"; _e("Settings Updated."); echo "</strong></p></div>";
 
@@ -121,7 +121,7 @@ function cf7pp_admin_table() {
 
 
 	// get options
-	$options = get_option('cf7pp_options');
+	$options = get_option('cf7elavon_options');
 
 	if (empty($options['currency'])) { 					$options['currency'] = ''; }
 	if (empty($options['language'])) { 					$options['language'] = ''; }
@@ -451,7 +451,7 @@ function cf7pp_admin_table() {
 			<table style="width: 100%;">
 				
 				<?php
-				cf7pp_extensions_page();
+				cf7elavon_extensions_page();
 				?>
 				
 			</table>

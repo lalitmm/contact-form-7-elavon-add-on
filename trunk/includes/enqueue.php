@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // admin enqueue
-function cf7pp_admin_enqueue() {
+function cf7elavon_admin_enqueue() {
 
 	// admin css
 	wp_register_style('cf7pp-admin-css',plugins_url('../assets/css/admin.css',__FILE__),false,false);
@@ -15,14 +15,14 @@ function cf7pp_admin_enqueue() {
 	wp_enqueue_script('cf7pp-admin',plugins_url('../assets/js/admin.js',__FILE__),array('jquery'),false);
 
 }
-add_action('admin_enqueue_scripts','cf7pp_admin_enqueue');
+add_action('admin_enqueue_scripts','cf7elavon_admin_enqueue');
 
 
 
 
 
 // public enqueue
-function cf7pp_public_enqueue() {
+function cf7elavon_public_enqueue() {
 
 	// path
 	$site_url = get_site_url();
@@ -75,4 +75,4 @@ function cf7pp_public_enqueue() {
 
 
 }
-add_action('wp_enqueue_scripts','cf7pp_public_enqueue',10);
+add_action('wp_enqueue_scripts','cf7elavon_public_enqueue',10);

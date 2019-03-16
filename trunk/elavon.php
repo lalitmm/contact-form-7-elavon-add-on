@@ -7,7 +7,7 @@ Description: Integrates Elavon with Contact Form 7
 Author: 
 Author URI: 
 License: GPL2
-Version: 1.6.1
+Version: 0.0.1
 */
 
 /*  Copyright 2018 Roventix Inc
@@ -29,13 +29,13 @@ Version: 1.6.1
 // plugin variable: cf7elavon
 
 // empty function used by pro version to check if free version is installed
-function cf7pp_free() {
+function cf7elavon_free() {
 }
 
 // check if pro version is attempting to be activated - if so, then deactive this plugin
 if (function_exists('cf7elavon_pro')) {
 
-	deactivate_plugins('contact-form-7-elavon-add-on-pro/paypal.php');
+	deactivate_plugins('contact-form-7-elavon-add-on-pro/elavon.php');
 
 } else {
 
@@ -110,7 +110,7 @@ if (function_exists('cf7elavon_pro')) {
 		function cf7elavon_my_admin_notice() {
 			?>
 			<div class="error">
-				<p><?php _e( '<b>Contact Form 7 - Elavon Add-on:</b> Contact Form 7 is not installed and / or active! Please install <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>.', 'cf7pp' ); ?></p>
+				<p><?php _e( '<b>Contact Form 7 - Elavon Add-on:</b> Contact Form 7 is not installed and / or active! Please install <a target="_blank" href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>.', 'cf7elavon' ); ?></p>
 			</div>
 			<?php
 		}
